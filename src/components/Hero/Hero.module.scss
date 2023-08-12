@@ -9,25 +9,24 @@
 
   padding: 30px;
   height: 100vh;
-  background-image: url(./../../assets/img/hero-bg.png);
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
+  //   background-image: url(./../../assets/img/hero-bg.png);
+  //   background-position: center center;
+  //   background-size: cover;
+  //   background-attachment: fixed;
 }
 .Hero canvas {
   width: 100vw;
-  height: 100vh;
 }
-.Hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, $alpha: 0.2);
-  z-index: 0;
-}
+// .Hero::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   background-color: rgba(0, 0, 0, $alpha: 0.2);
+//   z-index: 0;
+// }
 
 .title {
   margin: 0 auto 40px auto;
