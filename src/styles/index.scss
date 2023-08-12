@@ -1,0 +1,12 @@
+@import "./libs/reset.scss";
+@import "./vars/global.scss";
+
+body {
+  background-color: var(--color-bg);
+}
+
+.container {
+  max-width: 1115px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
