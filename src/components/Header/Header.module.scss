@@ -1,8 +1,13 @@
 .Header {
-  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px 0;
   background-color: var(--color-bg);
   box-shadow: var(--shadow-neon);
   border-bottom: var(--color-accent-2);
+  z-index: 10;
 }
 .logo {
   margin-right: auto;

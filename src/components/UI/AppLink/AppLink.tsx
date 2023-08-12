@@ -4,7 +4,8 @@ import cls from "./AppLink.module.scss";
 import classNames from "../../../utils/classNames/classNames";
 
 export enum AppLinkTheme {
-  CLEAR = "clear",
+  clear = "clear",
+  button = "button",
 }
 
 // при добавлении новой темы для ссылки добавляем её в enum и после в css
@@ -20,7 +21,7 @@ const AppLink: FC<AppLinkProps> = (props) => {
     children,
     className,
     to,
-    theme = AppLinkTheme.CLEAR,
+    theme = AppLinkTheme.clear,
     ...otherProps
   } = props;
 

@@ -1,9 +1,18 @@
 :root {
   --color-bg: #0d0d2b;
+  --color-bg-RGB: 13, 13, 43;
+  --color-text: #fff;
+  --color-text-2: #d0cdd7;
   --color-accent: #3671e9;
   --color-accent-2: #1e4262;
 
-  --shadow-neon: -3px -1px 10px rgba(54, 113, 233, 0.6);
+  --shadow-neon: 0 0 15px rgba(54, 113, 233, 0.6);
 
   --transition-hover: 0.3s;
+
+  --button-font: 500 24px/120% "Roboto", sans-serif;
+
+  --button-border-radius: 16px;
+  --button-padding: 20px 32px;
+  --button-hover-scale: 1.02;
 }

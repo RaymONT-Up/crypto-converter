@@ -4,3 +4,18 @@
 }
 .clear {
 }
+
+.button {
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+
+  font: var(--button-font);
+
+  color: var(--color-text);
+  background-color: var(--color-accent);
+  transition: all, var(--transition-hover);
+}
+.button:hover {
+  box-shadow: var(--shadow-neon);
+  transform: scale(var(--button-hover-scale));
+}

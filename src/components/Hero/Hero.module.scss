@@ -1,0 +1,39 @@
+.Hero {
+  position: relative;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 30px;
+  height: 100vh;
+  background-image: url(./../../assets/img/hero-bg.png);
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.Hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(var(--color-bg-RGB), $alpha: 0.7);
+  z-index: 0;
+}
+
+.title {
+  margin: 0 auto 40px auto;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
+}
