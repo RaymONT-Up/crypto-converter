@@ -5,10 +5,17 @@
   margin-bottom: 2vh;
   width: 100%;
 }
-.inner {
+.logo__wrapper {
+  display: block;
+  max-width: 220px;
+  width: 100%;
+  margin-right: auto;
+}
+.Header .inner {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 15px 30px;
 }
 
 .list {

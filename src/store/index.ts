@@ -1,14 +1,17 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import CoinsSlice from "./reducers/CoinsSlice";
 
+import { cryptoApi } from "../services/cryptoApi";
+
 const rootReducer = combineReducers({
   CoinsSlice,
+  [cryptoApi.reducerPath]: cryptoApi.reducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    // middleware: () => {}
+    middleware: (getDefaultMiddleWare) => getDefaultMiddleWare().concat(cryptoApi.middleware)
   });
 };
 

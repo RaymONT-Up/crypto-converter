@@ -1,16 +1,21 @@
 import { RouteProps } from "react-router-dom";
 import MainPage from "../pages/MainPage/MainPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import { CoinsPage } from "../pages/Coins";
 
 /* eslint-disable no-unused-vars */
 export enum AppRoutes {
   MAIN = "main",
-  NOT_FOUND_PAGE = "not_found",
+  COINS = "coins",
+
+  NOT_FOUND = "not_found",
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: "/",
-  [AppRoutes.NOT_FOUND_PAGE]: "*",
+  [AppRoutes.COINS]: "/coins",
+
+  [AppRoutes.NOT_FOUND]: "*",
 };
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -18,7 +23,12 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     path: RoutePath.main,
     element: <MainPage />,
   },
-  [AppRoutes.NOT_FOUND_PAGE]: {
+  [AppRoutes.COINS]: {
+    path: RoutePath.coins,
+    element: <CoinsPage />,
+  },
+
+  [AppRoutes.NOT_FOUND]: {
     path: RoutePath.not_found,
     element: <NotFoundPage />,
   },

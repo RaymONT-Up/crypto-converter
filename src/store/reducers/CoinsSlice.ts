@@ -1,5 +1,5 @@
 import { ICoin } from "../../models/ICoin"
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 interface TypesInitialStat {
@@ -8,7 +8,7 @@ interface TypesInitialStat {
     error: null | string,
 }
 
-const initialState: TypesInitialStat  = {
+const initialState: TypesInitialStat = {
     coins: [],
     isLoading: false,
     error: null,
@@ -17,11 +17,16 @@ const initialState: TypesInitialStat  = {
 export const coinsSlice = createSlice({
     name: 'coins',
     initialState,
-    reducers:{
-        action(state,action) {
-            
+    reducers: {
+        action(state, action) {
+
         }
     },
+
+    // extraReducers: (builder) => {
+
+
+    // },
 })
 
 export default coinsSlice.reducer

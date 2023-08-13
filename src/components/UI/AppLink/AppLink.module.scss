@@ -26,15 +26,6 @@
   font: var(--button-font);
   transition: all var(--transition-hover);
 }
-.default::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -10%;
-  width: 100%;
-  background-color: var(--color-text);
-  height: 5%;
-}
+
 .default:hover {
 }

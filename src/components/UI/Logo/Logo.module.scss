@@ -1,19 +1,5 @@
-.logo {
-  &_white {
-    fill: #fff;
-    transition: fill, var(--transition-hover);
-  }
-  &_dark {
-    fill: #0d0d2b;
-  }
-  &_blue {
-    fill: #3671e9;
-    transition: fill, var(--transition-hover);
-  }
-  &:hover &_white {
-    fill: #3671e9;
-  }
-  &:hover &_blue {
-    fill: #fff;
-  }
+.Logo {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
