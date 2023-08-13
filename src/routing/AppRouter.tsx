@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { routeConfig } from "./RouterConfig";
+import Card from "../components/UI/Card/Card";
 
 const AppRouter = () => (
-  <div className="page-wrapper">
+  <Card className="page-wrapper">
     <Suspense fallback={<div>loading</div>}>
       <Routes>
         {Object.values(routeConfig).map(({ element, path }) => (
@@ -11,7 +12,7 @@ const AppRouter = () => (
         ))}
       </Routes>
     </Suspense>
-  </div>
+  </Card>
 );
 
 export default AppRouter;

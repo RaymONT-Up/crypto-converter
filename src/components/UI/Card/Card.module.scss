@@ -1,0 +1,13 @@
+.Card {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 100%;
+  padding: var(--card-padding);
+
+  border-radius: var(--card-border-radius);
+
+  background: var(--card-background);
+}

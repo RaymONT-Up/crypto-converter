@@ -2,8 +2,6 @@
   text-decoration: none;
   display: inline-block;
 }
-.clear {
-}
 
 .button {
   padding: var(--button-padding);
@@ -18,4 +16,25 @@
 .button:hover {
   box-shadow: var(--shadow-neon);
   transform: scale(var(--button-hover-scale));
+}
+
+.default {
+  position: relative;
+  padding: 5px 10px;
+  color: var(--color-text);
+
+  font: var(--button-font);
+  transition: all var(--transition-hover);
+}
+.default::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10%;
+  width: 100%;
+  background-color: var(--color-text);
+  height: 5%;
+}
+.default:hover {
 }

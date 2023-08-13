@@ -24,7 +24,7 @@ const VantaEffect: FC<VantaEffectProps> = ({ className }) => {
           minWidth: 200.0,
           baseColor: 0x0,
           backgroundColor: 0x0,
-          size: 1.2,
+          size: 1.5,
         })
       );
     }
