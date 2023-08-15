@@ -5,6 +5,7 @@ import Title, {
   TitleTags,
   TitleTheme,
 } from "../../../components/UI/Title/Title";
+import CoinsList from "../../../components/CoinsList/CoinsList";
 
 interface CoinsPageProps {
   className?: string;
@@ -20,8 +21,9 @@ const CoinsPage: FC<CoinsPageProps> = (props) => {
         Tag={TitleTags.h1}
         centered={true}
       >
-        CryptoCoins charts
+        Charts
       </Title>
+      <CoinsList />
     </div>
   );
 };

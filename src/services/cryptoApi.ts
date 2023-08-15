@@ -1,16 +1,27 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 
+
+// interface getCryptosParams {
+//     limit?: number;
+//     offset: number;
+// }
+
 const cryptoApiHeaders = {
-    'X-RapidAPI-Key': '4e2120354fmsh8a26afe29d6287fp13103ejsn27b307e3f07b',
+    'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
     'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
 }
 
 const baseUrl = 'https://coinranking1.p.rapidapi.com';
 
 
+// позже вынести это в uttils и написать тесты 
 const createRequest =
     (url: string) => ({ url, headers: cryptoApiHeaders })
+
+// const createUrlParams =  (url:string,params:getCryptosParams) =>{
+
+// }
 
 
 
@@ -23,12 +34,11 @@ export const cryptoApi = createApi({
         // Late to typify the response of the request
         //  builder.query<YourResponseType, void>
         getCryptos: builder.query({
-            query: () => createRequest('/coins')
+            query: (): any => createRequest('/coins?limit=20&offset=2')
         })
     })
 })
 
-// @ts-ignore
 export const {
     useGetCryptosQuery,
 } = cryptoApi
