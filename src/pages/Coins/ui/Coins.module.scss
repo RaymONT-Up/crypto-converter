@@ -1,7 +1,15 @@
 .CoinsPage {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-bottom: auto;
 }
 .Title {
-  margin-bottom: 20%;
+  margin-bottom: 2%;
+}
+.search {
+  position: sticky;
+  top: 2%;
+
+  margin-bottom: 2%;
 }

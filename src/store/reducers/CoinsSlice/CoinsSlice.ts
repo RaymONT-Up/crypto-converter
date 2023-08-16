@@ -20,9 +20,7 @@ export const coinsSlice = createSlice({
     initialState,
     reducers: {
         setPage(state, action) {
-
             setPageUrlParam(action.payload)
-            debugger
             state.currentPage = action.payload;
         },
 

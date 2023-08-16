@@ -11,11 +11,8 @@ export const getPageUrlParam = (): number | false => {
 }
 
 export const setPageUrlParam = (page: number) => {
-    console.log(page)
-
     setParamToUrl(coinsParams.page, page.toString())
 }
-
 
 export const getPerPageUrlParam = (): number | false => {
     return +getParamFromUrl(coinsParams.perPage)

@@ -34,8 +34,8 @@ export const cryptoApi = createApi({
         // Late to typify the response of the request
         //  builder.query<YourResponseType, void>
         getCryptos: builder.query({
-            query: ({ perPage, currentPage }) =>
-                createRequest(`/coins?limit=${perPage}&offset=${currentPage}`),
+            query: ({ perPage, currentPage, search }) =>
+                createRequest(`/coins?limit=${perPage}&offset=${currentPage}&search=${search}`),
         })
     })
 })
