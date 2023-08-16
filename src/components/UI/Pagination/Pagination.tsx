@@ -6,31 +6,39 @@ interface PaginationProps {
   className?: string;
 
   total: number;
-  offset: number; // страница
-  limit: number; // всего на странице
+  currentPage: number; // страница
+  perPage: number; // всего на странице
   onPageChange: (page: number) => void;
 }
 
 const Pagination: FC<PaginationProps> = (props) => {
-  const { className, offset, total, limit, onPageChange } = props;
+  const { className, currentPage, total, perPage, onPageChange } = props;
 
-  const totalPages = Math.ceil(total / limit);
+  const totalPages = Math.ceil(total / perPage);
 
   const displayPages: number[] = [];
   const visiblePages = 5;
   for (
-    let i = Math.max(1, offset - Math.floor(visiblePages / 2));
-    i <= Math.min(totalPages, offset + Math.floor(visiblePages / 2));
+    let i = Math.max(1, currentPage - Math.floor(visiblePages / 2));
+    i <= Math.min(totalPages, currentPage + Math.floor(visiblePages / 2));
     i++
   ) {
     displayPages.push(i);
   }
-  console.log(displayPages, totalPages);
 
+  const isActivePage = (currentPage: number, numPage: number): boolean => {
+    return currentPage === numPage ? true : false;
+  };
   return (
     <ul className={classNames(cls.Pagination, {}, [className || ""])}>
       {displayPages.map((num) => (
-        <li className={cls.button} onClick={() => onPageChange(num)} key={num}>
+        <li
+          className={classNames(cls.button, {
+            [cls.activePage]: isActivePage(currentPage, num),
+          })}
+          onClick={() => onPageChange(num)}
+          key={num}
+        >
           {num}
         </li>
       ))}

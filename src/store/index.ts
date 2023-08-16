@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import CoinsSlice from "./reducers/CoinsSlice";
+import CoinsSlice from "./reducers/CoinsSlice/CoinsSlice";
 
 import { cryptoApi } from "../services/cryptoApi";
 

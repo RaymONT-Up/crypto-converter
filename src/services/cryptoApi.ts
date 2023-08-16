@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { setTotalCoins } from "../store/reducers/CoinsSlice";
+import { setTotalCoins } from "../store/reducers/CoinsSlice/CoinsSlice";
 
 
 
@@ -34,8 +34,8 @@ export const cryptoApi = createApi({
         // Late to typify the response of the request
         //  builder.query<YourResponseType, void>
         getCryptos: builder.query({
-            query: ({ limit, offset }) =>
-                createRequest(`/coins?limit=${limit}&offset=${offset}`),
+            query: ({ perPage, currentPage }) =>
+                createRequest(`/coins?limit=${perPage}&offset=${currentPage}`),
         })
     })
 })

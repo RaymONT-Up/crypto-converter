@@ -10,8 +10,10 @@ import Pagination from "../../../components/UI/Pagination/Pagination";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import Loader from "../../../components/UI/Loader/Loader";
 import { useGetCryptosQuery } from "../../../services/cryptoApi";
-import { useSearchParams } from "react-router-dom";
-import { setPage, setTotalCoins } from "../../../store/reducers/CoinsSlice";
+import {
+  setPage,
+  setTotalCoins,
+} from "../../../store/reducers/CoinsSlice/CoinsSlice";
 
 interface CoinsPageProps {
   className?: string;
@@ -20,19 +22,16 @@ interface CoinsPageProps {
 const CoinsPage: FC<CoinsPageProps> = (props) => {
   const { className } = props;
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [urlPageNumber, setUrlPageNumber] = useState(searchParams.get("page"));
-  console.log(urlPageNumber);
-
   const dispatch = useAppDispatch();
-  const offset = useAppSelector((state) => state.coins.offset);
-  const limit = useAppSelector((state) => state.coins.limit);
+  const currentPage = useAppSelector((state) => state.coins.currentPage);
+  const perPage = useAppSelector((state) => state.coins.perPage);
 
-  const { data, isLoading } = useGetCryptosQuery({ limit, offset });
+  const { data, isLoading } = useGetCryptosQuery({ perPage, currentPage });
   const coins = data?.data?.coins;
   const total = data?.data?.stats?.totalCoins;
 
   useEffect(() => {
+    // установка total
     if (total) {
       dispatch(setTotalCoins(total));
     }
@@ -44,8 +43,6 @@ const CoinsPage: FC<CoinsPageProps> = (props) => {
 
   const onPageChange = (page: number) => {
     dispatch(setPage(page));
-    // @ts-ignore
-    setUrlPageNumber(page);
   };
   return (
     <div className={classNames(cls.CoinsPage, {}, [className || ""])}>
@@ -60,8 +57,8 @@ const CoinsPage: FC<CoinsPageProps> = (props) => {
       <CoinsList coins={coins} />
       <Pagination
         total={total}
-        offset={offset}
-        limit={limit}
+        currentPage={currentPage}
+        perPage={perPage}
         onPageChange={onPageChange}
       />
     </div>
