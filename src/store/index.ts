@@ -4,7 +4,7 @@ import CoinsSlice from "./reducers/CoinsSlice";
 import { cryptoApi } from "../services/cryptoApi";
 
 const rootReducer = combineReducers({
-  CoinsSlice,
+  coins: CoinsSlice,
   [cryptoApi.reducerPath]: cryptoApi.reducer,
 });
 

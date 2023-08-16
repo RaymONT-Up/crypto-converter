@@ -1,0 +1,13 @@
+.Pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.button {
+  padding: 5px;
+  margin: 5px;
+
+  columns: var(--color-text);
+  background-color: var(--color-bg);
+}

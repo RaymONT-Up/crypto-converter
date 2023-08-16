@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { setTotalCoins } from "../store/reducers/CoinsSlice";
 
 
 
@@ -24,7 +25,6 @@ const createRequest =
 // }
 
 
-
 export const cryptoApi = createApi({
     reducerPath: 'crypto',
     baseQuery: fetchBaseQuery({
@@ -34,7 +34,8 @@ export const cryptoApi = createApi({
         // Late to typify the response of the request
         //  builder.query<YourResponseType, void>
         getCryptos: builder.query({
-            query: (): any => createRequest('/coins?limit=20&offset=2')
+            query: ({ limit, offset }) =>
+                createRequest(`/coins?limit=${limit}&offset=${offset}`),
         })
     })
 })

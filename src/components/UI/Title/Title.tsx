@@ -6,6 +6,7 @@ export enum TitleTheme {
   clear = "clear",
   hero = "hero",
   subtitle = "subtitle",
+  cardTitle = "cardTitle",
 }
 export enum TitleTags {
   h1 = "h1",
