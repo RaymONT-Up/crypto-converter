@@ -11,6 +11,7 @@ export enum cardThemes {
 export enum CardTags {
   div = "div",
   ul = "ul",
+  li = "li",
 }
 
 interface CardProps {

@@ -4,8 +4,6 @@ export interface ICoinItem {
     symbol: string,
     uuid: string,
 
-    color: string;
-
     change: string;
     price: string,
     marketCap: string;

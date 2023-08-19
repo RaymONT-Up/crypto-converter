@@ -12,7 +12,9 @@ import {
   Legend,
 } from "chart.js";
 import { Chart, Line } from "react-chartjs-2";
-import Card from "../UI/Card/Card";
+import Card, { CardTags, cardThemes } from "../UI/Card/Card";
+import { ICoinItem } from "../../models/ModelCoins";
+import classNames from "../../utils/classNames/classNames";
 
 ChartJS.register(
   CategoryScale,
@@ -24,28 +26,20 @@ ChartJS.register(
   Legend
 );
 
-interface CoinItemProps {
-  className?: string;
-
-  name: string;
-  iconUrl: string;
-  symbol: string;
-  id: string;
-  sparkline: string[];
-  price: string;
-}
-
 const options = {};
-const CoinItem: FC<CoinItemProps> = (props: CoinItemProps) => {
-  const { name, price, iconUrl, symbol, id, sparkline } = props;
+const CoinItem: FC<ICoinItem> = (props) => {
+  const { name, price, iconUrl, symbol, sparkline, change } = props;
 
-  const [cryptoData, setCryptoData] = useState({
+  const [cryptoData] = useState({
     labels: sparkline.map((num, index) => index.toString()),
     datasets: [{ label: "$", data: sparkline.map((num) => Math.trunc(+num)) }],
   });
 
+  const cardTheme =
+    +change >= 0 ? cardThemes.glossyGreen : cardThemes.glossyRed;
+
   return (
-    <li className={cls.CoinItem}>
+    <Card className={cls.CoinItem} Tag={CardTags.li} theme={cardTheme}>
       <div className={cls.top}>
         <Title
           className={cls.name}
@@ -56,12 +50,12 @@ const CoinItem: FC<CoinItemProps> = (props: CoinItemProps) => {
         </Title>
         <img className={cls.icon} src={iconUrl} alt={`icon of ${name}`} />
       </div>
-      <div>{price}</div>
+      <div>price: {price}</div>
 
-      <div>{symbol}</div>
+      <div>change: {change}</div>
 
       <Line data={cryptoData} options={options} />
-    </li>
+    </Card>
   );
 };
 

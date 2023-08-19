@@ -1,7 +1,8 @@
 .CoinsList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 50px;
+  grid-gap: var(--size-gap);
 
   justify-items: center;
+  margin-bottom: 3%;
 }

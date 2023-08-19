@@ -20,9 +20,15 @@ const CoinsList: FC<CoinsListProps> = (props) => {
           key={item.uuid}
           iconUrl={item.iconUrl}
           symbol={item.symbol}
-          id={item.uuid}
+          uuid={item.uuid}
           sparkline={item.sparkline}
           price={item.price}
+          change={item.change}
+          rank={item.rank}
+          tier={item.tier}
+          listedAt={item.listedAt}
+          lowVolume={item.lowVolume}
+          marketCap={item.marketCap}
         />
       ))}
     </ul>

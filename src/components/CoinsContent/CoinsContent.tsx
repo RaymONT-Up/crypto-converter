@@ -51,7 +51,7 @@ const CoinsContent: FC<CoinsContentProps> = (props) => {
   };
 
   return (
-    <div className={classNames(cls.CoinsContent, {}, [className || ""])}>
+    <>
       <CoinsList coins={coins} />
       <Pagination
         total={total}
@@ -59,7 +59,7 @@ const CoinsContent: FC<CoinsContentProps> = (props) => {
         perPage={perPage}
         onPageChange={onPageChange}
       />
-    </div>
+    </>
   );
 };
 
