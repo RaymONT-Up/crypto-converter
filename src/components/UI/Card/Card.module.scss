@@ -11,3 +11,22 @@
 
   background: var(--card-background);
 }
+
+.classic {
+  background-color: transparent;
+}
+
+.glossyGreen {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 210, 0, 0.5),
+    rgba(255, 255, 255, 0.4)
+  );
+}
+.glossyRed {
+  background: linear-gradient(
+    45deg,
+    rgba(20, 80, 0, 0.5),
+    rgba(255, 255, 255, 0.4)
+  );
+}

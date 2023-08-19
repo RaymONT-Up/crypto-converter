@@ -2,10 +2,11 @@ import { FC } from "react";
 import cls from "./CoinsList.module.scss";
 import classNames from "../../utils/classNames/classNames";
 import CoinItem from "../CoinItem/CoinItem";
+import { ICoinItem, TypesCoins } from "../../models/ModelCoins";
 
 interface CoinsListProps {
   className?: string;
-  coins: object[];
+  coins: TypesCoins;
 }
 
 const CoinsList: FC<CoinsListProps> = (props) => {
@@ -13,7 +14,7 @@ const CoinsList: FC<CoinsListProps> = (props) => {
 
   return (
     <ul className={classNames(cls.CoinsList, {}, [className || ""])}>
-      {coins.map((item: any) => (
+      {coins.map((item: ICoinItem) => (
         <CoinItem
           name={item.name}
           key={item.uuid}

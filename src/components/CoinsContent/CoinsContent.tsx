@@ -10,6 +10,7 @@ import {
   setTotalCoins,
 } from "../../store/reducers/CoinsSlice/CoinsSlice";
 import Loader from "../UI/Loader/Loader";
+import { TypesCoins } from "../../models/ModelCoins";
 
 interface CoinsContentProps {
   className?: string;
@@ -29,8 +30,8 @@ const CoinsContent: FC<CoinsContentProps> = (props) => {
     search,
   });
 
-  const coins = data?.data?.coins;
-  const total = data?.data?.stats?.totalCoins;
+  const coins: TypesCoins = data?.data?.coins;
+  const total: number = data?.data?.stats?.totalCoins;
 
   useEffect(() => {
     // установка total

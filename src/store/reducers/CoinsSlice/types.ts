@@ -6,4 +6,6 @@ export interface TypesCoinsInitialState {
     perPage: number;
     total: number | null;
 
+    search: string;
+
 }

@@ -12,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import { Chart, Line } from "react-chartjs-2";
+import Card from "../UI/Card/Card";
 
 ChartJS.register(
   CategoryScale,
@@ -46,7 +47,11 @@ const CoinItem: FC<CoinItemProps> = (props: CoinItemProps) => {
   return (
     <li className={cls.CoinItem}>
       <div className={cls.top}>
-        <Title Tag={TitleTags.h6} theme={TitleTheme.subtitle}>
+        <Title
+          className={cls.name}
+          Tag={TitleTags.h6}
+          theme={TitleTheme.subtitle}
+        >
           {name}
         </Title>
         <img className={cls.icon} src={iconUrl} alt={`icon of ${name}`} />

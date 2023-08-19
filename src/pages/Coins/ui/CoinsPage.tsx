@@ -10,9 +10,13 @@ import Input from "../../../components/UI/Input/Input";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 
-import { setPageUrlParam } from "../../../store/reducers/CoinsSlice/urlParams";
+import {
+  setPageUrlParam,
+  setSearchUrlParam,
+} from "../../../store/reducers/CoinsSlice/urlParams";
 import CoinsContent from "../../../components/CoinsContent/CoinsContent";
 import useDebounce from "../../../hooks/useDebounce";
+import { setSearch } from "../../../store/reducers/CoinsSlice/CoinsSlice";
 
 interface CoinsPageProps {
   className?: string;
@@ -21,19 +25,22 @@ interface CoinsPageProps {
 const CoinsPage: FC<CoinsPageProps> = (props) => {
   const { className } = props;
 
-  const [searchValue, setSearchValue] = useState("Bitcoin");
-  const debouncedSearchValue = useDebounce<string>(searchValue, 750);
+  const dispatch = useAppDispatch();
 
   const currentPage = useAppSelector((state) => state.coins.currentPage);
   const perPage = useAppSelector((state) => state.coins.perPage);
+  const searchValue = useAppSelector((state) => state.coins.search);
+
+  const debouncedSearchValue = useDebounce<string>(searchValue, 750);
 
   useEffect(() => {
     // установка в url parametrs при первой загрузке компонента
     setPageUrlParam(currentPage);
+    setSearchUrlParam(searchValue);
   });
 
   const searchHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
+    dispatch(setSearch(event.target.value));
   };
   return (
     <div className={classNames(cls.CoinsPage, {}, [className || ""])}>
@@ -51,7 +58,7 @@ const CoinsPage: FC<CoinsPageProps> = (props) => {
         onChangeHandler={searchHandler}
       />
 
-      {/* через CoinsContent происходит запрос к серверу и отправляется debouncedSearchValue */}
+      {/* через CoinsContent происходит запрос к серверу на получение данных. */}
       <CoinsContent
         currentPage={currentPage}
         perPage={perPage}

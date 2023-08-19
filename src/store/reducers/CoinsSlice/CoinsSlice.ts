@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TypesCoinsInitialState } from "./types";
-import { getPageUrlParam, getPerPageUrlParam, setPageUrlParam } from "./urlParams";
+import { getPageUrlParam, getPerPageUrlParam, getSearchUrlParam, setPageUrlParam, setSearchUrlParam } from "./urlParams";
 
 
 
@@ -12,7 +12,8 @@ const initialState: TypesCoinsInitialState = {
     total: null,
 
     currentPage: getPageUrlParam() || 1,
-    perPage: getPerPageUrlParam() || 30,
+    perPage: getPerPageUrlParam() || 21,
+    search: getSearchUrlParam() || '',
 }
 
 export const coinsSlice = createSlice({
@@ -27,10 +28,19 @@ export const coinsSlice = createSlice({
         setTotalCoins(state, action) {
             state.total = action.payload;
         },
+
+        setSearch(state, action) {
+            setSearchUrlParam(action.payload)
+            state.search = action.payload;
+
+            // установка первой страницы 
+            setPageUrlParam(1)
+            state.currentPage = 1;
+        },
     },
 
 })
 
-export const { setPage, setTotalCoins } = coinsSlice.actions
+export const { setPage, setTotalCoins, setSearch } = coinsSlice.actions
 
 export default coinsSlice.reducer
