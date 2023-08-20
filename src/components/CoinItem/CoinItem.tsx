@@ -26,13 +26,48 @@ ChartJS.register(
   Legend
 );
 
-const options = {};
+const options = {
+  scales: {
+    y: {
+      beginAtZero: false, // Начинать от значения, а не с 0
+      ticks: {
+        // stepSize: 0.1, / / Шаг изменения между значениями
+      },
+    },
+    x: {
+      beginAtZero: false, // Начинать от значения, а не с 0
+      ticks: {
+        // stepSize: 0.1, // Шаг изменения между значениями
+      },
+    },
+  },
+  elements: {
+    point: {
+      radius: 0, // радиус точки
+      // backgroundColor: "#000",
+    },
+    line: {
+      borderWidth: 2,
+      tension: 0.5, // сглаживание от 0 до 1
+      borderColor: "#3671e9",
+    },
+  },
+  plugins: {
+    legend: {
+      display: false,
+    },
+    // title: {
+    //   display: false,
+    // },
+  },
+};
+
 const CoinItem: FC<ICoinItem> = (props) => {
   const { name, price, iconUrl, symbol, sparkline, change } = props;
 
   const [cryptoData] = useState({
-    labels: sparkline.map((num, index) => index.toString()),
-    datasets: [{ label: "$", data: sparkline.map((num) => Math.trunc(+num)) }],
+    labels: sparkline.map((num, index) => "test"),
+    datasets: [{ label: "$", data: sparkline.map((num) => +num) }],
   });
 
   const cardTheme =
