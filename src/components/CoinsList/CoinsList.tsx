@@ -11,7 +11,7 @@ interface CoinsListProps {
 
 const CoinsList: FC<CoinsListProps> = (props) => {
   const { className, coins } = props;
-
+  
   return (
     <ul className={classNames(cls.CoinsList, {}, [className || ""])}>
       {coins.map((item: ICoinItem) => (

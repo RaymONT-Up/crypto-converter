@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useEffect, useState } from "react";
+import { FC, ChangeEvent, useEffect } from "react";
 import cls from "./Coins.module.scss";
 import classNames from "../../../utils/classNames/classNames";
 import Title, {

@@ -11,6 +11,7 @@ import {
 } from "../../store/reducers/CoinsSlice/CoinsSlice";
 import Loader from "../UI/Loader/Loader";
 import { TypesCoins } from "../../models/ModelCoins";
+import Title, { TitleTags, TitleTheme } from "../UI/Title/Title";
 
 interface CoinsContentProps {
   className?: string;
@@ -39,9 +40,16 @@ const CoinsContent: FC<CoinsContentProps> = (props) => {
       dispatch(setTotalCoins(total));
     }
   }, [dispatch, total]);
-
+ 
   if (isFetching) {
-    return <Loader />;
+    return <div className={cls.loaderWrapper}>
+      <Loader />
+    </div>;
+  }
+  if(coins.length === 0) {
+    return <Title className={cls.ErrorTitle} Tag={TitleTags.h2} theme={TitleTheme.subtitle} centered={true}>
+    Unfortunately we didn't find anything
+   </Title>
   }
 
   const onPageChange = (page: number) => {

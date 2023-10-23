@@ -1,7 +1,7 @@
 import { RouteProps } from "react-router-dom";
 import MainPage from "../pages/MainPage/MainPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import { CoinsPage } from "../pages/Coins";
+import { CoinsPage } from "../pages/CoinsPage";
 
 /* eslint-disable no-unused-vars */
 export enum AppRoutes {

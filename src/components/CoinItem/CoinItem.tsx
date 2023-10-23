@@ -10,11 +10,11 @@ import {
   Title as ChartTitle,
   Tooltip,
   Legend,
+  ChartOptions,
 } from "chart.js";
-import { Chart, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import Card, { CardTags, cardThemes } from "../UI/Card/Card";
 import { ICoinItem } from "../../models/ModelCoins";
-import classNames from "../../utils/classNames/classNames";
 
 ChartJS.register(
   CategoryScale,
@@ -26,47 +26,46 @@ ChartJS.register(
   Legend
 );
 
-const options = {
-  scales: {
-    y: {
-      beginAtZero: false, // Начинать от значения, а не с 0
-      ticks: {
-        // stepSize: 0.1, / / Шаг изменения между значениями
-      },
-    },
-    x: {
-      beginAtZero: false, // Начинать от значения, а не с 0
-      ticks: {
-        // stepSize: 0.1, // Шаг изменения между значениями
-      },
-    },
-  },
-  elements: {
-    point: {
-      radius: 0, // радиус точки
-      // backgroundColor: "#000",
-    },
-    line: {
-      borderWidth: 2,
-      tension: 0.5, // сглаживание от 0 до 1
-      borderColor: "#3671e9",
-    },
-  },
+const options: ChartOptions<'line'>  = {
+  responsive: true, // Make the chart responsive
   plugins: {
     legend: {
       display: false,
     },
-    // title: {
-    //   display: false,
-    // },
+  },
+  scales: {
+    x: {  
+      display: false,
+    },
+    y: {
+      display: false,
+    },
+  },
+  elements: {
+    point: {
+      radius: 0,
+    },  
+    line: {
+      borderWidth: 2.5,
+      tension: 0.5,
+      borderColor: "#3671e9",
+    },
   },
 };
+const currentDate = +new Date();
+
+const dates = Array.from({ length: 24 }, (_, index) => {
+  const time = new Date(currentDate - index * 3600000); // 3600000 миллисекунд в часе
+  const formattedTime = time.toISOString().slice(0, 16); // Форматируем как "ГГГГ-ММ-ДД ЧЧ:ММ"
+  return formattedTime;
+});
 
 const CoinItem: FC<ICoinItem> = (props) => {
-  const { name, price, iconUrl, symbol, sparkline, change } = props;
-
+  const { name, price, iconUrl, symbol, rank, sparkline, change, marketCap } =
+    props;
+  console.log(props);
   const [cryptoData] = useState({
-    labels: sparkline.map((num, index) => "test"),
+    labels: dates,
     datasets: [{ label: "$", data: sparkline.map((num) => +num) }],
   });
 
@@ -85,11 +84,18 @@ const CoinItem: FC<ICoinItem> = (props) => {
         </Title>
         <img className={cls.icon} src={iconUrl} alt={`icon of ${name}`} />
       </div>
-      <div>price: {price}</div>
-
-      <div>change: {change}</div>
-
-      <Line data={cryptoData} options={options} />
+      <div className={cls.bottom}>
+        <ul className={cls.list}>
+          <li className={cls.listItem}>Price: {price}</li>
+          <li className={cls.listItem}>Change: {change}</li>
+          <li className={cls.listItem}>Rank: {rank}</li>
+          <li className={cls.listItem}>Symbol: {symbol}</li>
+          <li className={cls.listItem}>MarketCap: {marketCap}</li>
+        </ul>
+        <div className={cls.chart}>
+          <Line data={cryptoData} options={options} />
+        </div>
+      </div>
     </Card>
   );
 };
